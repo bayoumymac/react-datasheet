@@ -1,7 +1,7 @@
 import 'babel-polyfill'
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import * as clipboard from "clipboard-polyfill/build/clipboard-polyfill.promise"
+import * as clipboard from "clipboard-polyfill"
 import Sheet from './Sheet'
 import Row from './Row'
 import Cell from './Cell'
