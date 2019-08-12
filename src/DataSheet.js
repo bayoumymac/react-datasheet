@@ -148,7 +148,8 @@ export default class DataSheet extends PureComponent {
 
       const parse = this.props.parsePaste || defaultParsePaste
       const changes = []
-      const pasteData = parse(e.clipboardData.getData('text/plain'));
+      const pasteData = !navigator.userAgent.includes("Trident") ? 
+      parse(e.clipboardData.getData('text/plain')) : parse(e);
       // in order of preference
       const { data, onCellsChanged, onPaste, onChange } = this.props
       if (onCellsChanged) {
