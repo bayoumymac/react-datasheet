@@ -263,8 +263,6 @@ export default class DataSheet extends PureComponent {
         this.handleCopy(e)
       } else if (keyCode === V_KEY && navigator.userAgent.includes("Trident")) {
         clipboard.readText().then(this.handlePaste)
-      } else if (keyCode === V_KEY && !(navigator.userAgent.includes("Trident"))) {
-        this.handlePaste(e);
       }
       return true
     }
@@ -395,6 +393,9 @@ export default class DataSheet extends PureComponent {
     document.addEventListener('mouseup', this.onMouseUp)
     // Listen for any outside mouse clicks
     document.addEventListener('mousedown', this.pageClick)
+    if (!navigator.userAgent.includes("Trident")) {
+      document.addEventListener('paste', this.handlePaste);
+    }
   }
 
   onMouseOver (i, j) {
