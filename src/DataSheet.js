@@ -139,7 +139,7 @@ export default class DataSheet extends PureComponent {
     }
   }
 
-  handlePaste (text) {
+  handlePaste (e) {
     if (isEmpty(this.state.editing)) {
       let { start, end } = this.getState()
 
@@ -148,7 +148,7 @@ export default class DataSheet extends PureComponent {
 
       const parse = this.props.parsePaste || defaultParsePaste
       const changes = []
-      const pasteData = parse(text)
+      const pasteData = parse(e.clipboardData.getData('text/plain'));
       // in order of preference
       const { data, onCellsChanged, onPaste, onChange } = this.props
       if (onCellsChanged) {
