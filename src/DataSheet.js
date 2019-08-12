@@ -263,6 +263,8 @@ export default class DataSheet extends PureComponent {
         this.handleCopy(e)
       } else if (keyCode === V_KEY && navigator.userAgent.includes("Trident")) {
         clipboard.readText().then(this.handlePaste)
+      } else if (keyCode === V_KEY && !(navigator.userAgent.includes("Trident"))) {
+        this.handlePaste(e);
       }
       return true
     }
